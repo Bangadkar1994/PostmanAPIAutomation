@@ -1,0 +1,339 @@
+{
+	"info": {
+		"_postman_id": "53f01442-aff9-4623-a194-ab9cd65f6bf1",
+		"name": "P44_ALL_singleAPI_TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28168622",
+		"_collection_link": "https://www.postman.com/shailesh1994/workspace/p44/collection/28168622-53f01442-aff9-4623-a194-ab9cd65f6bf1?action=share&creator=28168622&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"item": [
+				{
+					"name": "Valid_P44user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"email\":\"deepa.choudhary@klearnow.com\",\r\n    \"password\":\"bol12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.klearnow.com/api-staging/v1/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"klearnow",
+								"com"
+							],
+							"path": [
+								"api-staging",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "P44_LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"email\":\"deepa.choudhary@klearnow.com\",\r\n    \"password\":\"bol12345\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.klearnow.com/api-staging/v1/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"klearnow",
+								"com"
+							],
+							"path": [
+								"api-staging",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SUBMIT_BOL_MASTER",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"var currentTime = Math.floor(Date.now() / 1000);\r",
+									"pm.environment.set(\"epochTime\", currentTime);\r",
+									"//random data \r",
+									"var random =Math.random().toString(14).substring(2,6);\r",
+									"var useremail=\"P44\"+random;\r",
+									"var username=\"M\"+random;\r",
+									"var mscac=random;\r",
+									"var random1 =Math.random().toString(12).substring(2,5);\r",
+									"var hscac= random1;\r",
+									"var hbl= \"H\"+random1;\r",
+									"\r",
+									"pm.environment.set(\"id\",useremail);\r",
+									"pm.environment.set(\"id1\",username);\r",
+									"pm.environment.set(\"ms\",mscac);\r",
+									"pm.environment.set(\"hs\",hscac);\r",
+									"pm.environment.set(\"hb\",hbl);\r",
+									"\r",
+									"\r",
+									"// Set the request body\r",
+									"\r",
+									"var schema ={\r",
+									"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+									"  \"type\": \"object\",\r",
+									"  \"properties\": {\r",
+									"    \"eventMessage\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"bol\": {\r",
+									"          \"type\": \"array\",\r",
+									"          \"items\": [\r",
+									"            {\r",
+									"              \"type\": \"object\",\r",
+									"              \"properties\": {\r",
+									"                \"bolRequestId\": {\r",
+									"                  \"type\": \"string\"\r",
+									"                },\r",
+									"                \"mot\": {\r",
+									"                  \"type\": \"string\"\r",
+									"                },\r",
+									"                \"bolNumber\": {\r",
+									"                  \"type\": \"object\",\r",
+									"                  \"properties\": {\r",
+									"                    \"masterScac\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"masterBolNumber\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"houseScac\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"houseBolNumber\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    }\r",
+									"                  },\r",
+									"                  \"required\": [\r",
+									"                    \"masterScac\",\r",
+									"                    \"masterBolNumber\",\r",
+									"                    \"houseScac\",\r",
+									"                    \"houseBolNumber\"\r",
+									"                  ]\r",
+									"                },\r",
+									"                \"portOfLading\": {\r",
+									"                  \"type\": \"object\",\r",
+									"                  \"properties\": {\r",
+									"                    \"portCode\": {\r",
+									"                      \"type\": \"integer\"\r",
+									"                    },\r",
+									"                    \"portName\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"countryISOCode\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"portArrivalEpoch\": {\r",
+									"                      \"type\": \"integer\"\r",
+									"                    }\r",
+									"                  },\r",
+									"                  \"required\": [\r",
+									"                    \"portCode\",\r",
+									"                    \"portName\",\r",
+									"                    \"countryISOCode\",\r",
+									"                    \"portArrivalEpoch\"\r",
+									"                  ]\r",
+									"                },\r",
+									"                \"portOfUnlading\": {\r",
+									"                  \"type\": \"object\",\r",
+									"                  \"properties\": {\r",
+									"                    \"portCode\": {\r",
+									"                      \"type\": \"integer\"\r",
+									"                    },\r",
+									"                    \"portName\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"countryISOCode\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"portArrivalEpoch\": {\r",
+									"                      \"type\": \"integer\"\r",
+									"                    }\r",
+									"                  },\r",
+									"                  \"required\": [\r",
+									"                    \"portCode\",\r",
+									"                    \"portName\",\r",
+									"                    \"countryISOCode\",\r",
+									"                    \"portArrivalEpoch\"\r",
+									"                  ]\r",
+									"                },\r",
+									"                \"customer\": {\r",
+									"                  \"type\": \"object\",\r",
+									"                  \"properties\": {\r",
+									"                    \"customerTrackingId\": {\r",
+									"                      \"type\": \"integer\"\r",
+									"                    },\r",
+									"                    \"customerEINNumber\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"customerName\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"customerContact\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    },\r",
+									"                    \"customerAddress\": {\r",
+									"                      \"type\": \"string\"\r",
+									"                    }\r",
+									"                  },\r",
+									"                  \"required\": [\r",
+									"                    \"customerTrackingId\",\r",
+									"                    \"customerEINNumber\",\r",
+									"                    \"customerName\",\r",
+									"                    \"customerContact\",\r",
+									"                    \"customerAddress\"\r",
+									"                  ]\r",
+									"                }\r",
+									"              },\r",
+									"              \"required\": [\r",
+									"                \"bolRequestId\",\r",
+									"                \"mot\",\r",
+									"                \"bolNumber\",\r",
+									"                \"portOfLading\",\r",
+									"                \"portOfUnlading\",\r",
+									"                \"customer\"\r",
+									"              ]\r",
+									"            }\r",
+									"          ]\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"bol\"\r",
+									"      ]\r",
+									"    },\r",
+									"    \"eventType\": {\r",
+									"      \"type\": \"string\"\r",
+									"    },\r",
+									"    \"eventTime\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"eventMessage\",\r",
+									"    \"eventType\",\r",
+									"    \"eventTime\"\r",
+									"  ]\r",
+									"}\r",
+									"//schema test\r",
+									"const reqBody=JSON.parse(pm.request.body.raw);\r",
+									"pm.test('requesttest:rSchema is valid', function () {\r",
+									"    pm.expect(tv4.validate(reqBody, schema)).to.be.true;\r",
+									"\r",
+									"});\r",
+									"//datatype test\r",
+									"// pm.test('requesttest:BOL request id validation length test', function () {\r",
+									"//    pm.expect(reqBody.eventMessage.bol[0].bolRequestId,\"req id is not null\").to.not.be.null;\r",
+									"//    pm.expect(reqBody.eventMessage.bol[0].bolRequestId.length).to.be.below(33);\r",
+									"// });\r",
+									"\r",
+									"pm.environment.set(\"M\",reqBody.bol[0].bolNumber.masterBolNumber);\r",
+									"pm.environment.set(\"MSC\",reqBody.bol[0].bolNumber.masterScac);\r",
+									"pm.environment.set(\"P\",reqBody.bol[0].portOfUnlading.portCode);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('BOL requestid responseid match test', function () {\r",
+									"   pm.expect(jsonData[0].bolRequestId).to.eql(reqBody.bol[0].bolRequestId);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(10000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"bol\": [\r\n        {\r\n            \"bolRequestId\": \"{{id}}\",\r\n            \"mot\": \"SEA\",\r\n            \"bolNumber\": {\r\n                \"masterScac\": \"{{ms}}\",\r\n                \"masterBolNumber\": \"{{id1}}\",\r\n                \"houseScac\": \"\",\r\n                \"houseBolNumber\": \"\"\r\n            },\r\n            \"portOfLading\": {\r\n                \"portCode\": 2900,\r\n                \"portName\": \"Diverse SMS\",\r\n                \"countryISOCode\": \"GR\",\r\n                \"portArrivalEpoch\": 123456\r\n            },\r\n            \"portOfUnlading\": {\r\n                \"portCode\": 4551,\r\n                \"portName\": \"Diverse SMS\",\r\n                \"countryISOCode\": \"US\",\r\n                \"portArrivalEpoch\": 1234456\r\n            },\r\n            \"customer\": {\r\n                \"customerTrackingId\": \"368\",\r\n                \"customerEINNumber\": \"DFE1\",\r\n                \"customerName\": \"Tasty Rubber Chips XSS deposit\",\r\n                \"customerContact\": \"Kenyan Shilling vortals\",\r\n                \"customerAddress\": \"Drive Assistant\"\r\n            }\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.klearnow.com/api-staging/v1/submitbol",
+							"protocol": "https",
+							"host": [
+								"api",
+								"klearnow",
+								"com"
+							],
+							"path": [
+								"api-staging",
+								"v1",
+								"submitbol"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
