@@ -5836,11 +5836,11 @@
 									"});\r",
 									"\r",
 									"pm.test('BOL requestid responseid match test', function () {\r",
-									"   pm.expect(jsonData[0].messageTypeCode).to.eql(\"FAILURE\");\r",
+									"   pm.expect(jsonData[0].messageTypeCode).to.eql(\"SUCCESSFUL\");\r",
 									"});\r",
 									"\r",
 									"pm.test('BOL requestid responseid match test', function () {\r",
-									"   pm.expect(jsonData[0].text).to.eql(\"We do not support AIR at the moment\");\r",
+									"   pm.expect(jsonData[0].text).to.eql(\"Scheduled\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -8560,7 +8560,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/8/2",
+							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/25/6",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -8572,8 +8572,8 @@
 								"v1",
 								"bol",
 								"notifications",
-								"8",
-								"2"
+								"25",
+								"6"
 							]
 						}
 					},
@@ -8694,7 +8694,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/8/2",
+							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/2/2",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -8706,7 +8706,7 @@
 								"v1",
 								"bol",
 								"notifications",
-								"8",
+								"2",
 								"2"
 							]
 						}
@@ -8767,7 +8767,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/8/999",
+							"raw": "https://api.klearnow.com/api-staging/v1/bol/notifications/1/999",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -8779,7 +8779,7 @@
 								"v1",
 								"bol",
 								"notifications",
-								"8",
+								"1",
 								"999"
 							]
 						}
@@ -8930,12 +8930,12 @@
 						"header": [
 							{
 								"key": "kxtoken",
-								"value": "eyJhbGciOiJBMTI4S1ciLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0.Pn6rteyuBQJF1Im_l_5NYvn5qh1n2bwxMc0FEuPbbnw182IrAk05EA.ZWO6ktveqgNzukxUxIVzrg.4QOuSsOjNjeVfoYnlTh3AxRH3r7Vl3tpmJdsPUXrBCWvh7cq2VlePVnwRwz_-njow9awfJdkDKtwc4B0ZMWJiJwuvAW2I8XJtljDxSTxT0nkt0cthqmBL-V6iPZLoqk0rZjW3RFEj2QMsy1SyXFSs6cCAa0pbHL8zht3JNaKZvKexfw9JTJyP5y1bsjzjdFfGhsv4YjVAPjxuMhagNhkL26N3PjaVYtzjsgk6Cu_Eajp_22f-Ns8jEY_uy7Gl99z9TNzhRD_WVaozYTW00VLGIbBmUvDg9l_Jjutaa8SthDzSW1Ovyl3pq-rJTkVZ8T0tdVGxF5bss_tcV2edhe1iL4CjForZuplmahE5X5pAtvMHej4T5pYzS3__z2qyz_TxuCTwaE30K5NLgLuJAiQPWYgbGgNWVHJC7uvMjPaDzzibwZ4rPD1I0kRLTHQQwdE1C2a5w9OTmmpyPIxMN9WlElF8Qt_FFbevuuUFq5Pi7REB4iA6C7lA9RAQUNZWs89MbD2qWsOwCkjEpg86aYE3aC6JkvqHtY3cVdTs0GFVDq3OrSOdtJK6GOQvh66acEaKnNFoHdsauhXtu4-bsgWW66OjL_cnqWd6PyxMUQ8h6jOXAlKkp4zq1pnBLTqPD1QQ7QMUqcd1qqqoLiMn4P7wBAgiFMuoCxnx6mym5dUzwrcqOj5hSbtmBPpcF9zTRJAaq21YEOQQQN5Rmbre1wqG4qVMGmAjtroar-rxV7WeY6TWBLwBe4ydL0k3Y4TM8uOGNhiWyfTagnSaSgNulF45Obdn719v7tg4Try8WbMlCc7K_dC0SiIABqf5qS9QiPP.VkkliCkZZ7skSxzcQRs5Iw",
+								"value": "{{P44token}}",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.klearnow.com/api-staging/v1/bol/response/f7ce79e5-8a69-4efd-a750-21cdc4201b4d",
+							"raw": "https://api.klearnow.com/api-staging/v1/bol/response/2b5d10ea-65e8-427f-ba5d-229e3dbc52d9",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -8947,7 +8947,7 @@
 								"v1",
 								"bol",
 								"response",
-								"f7ce79e5-8a69-4efd-a750-21cdc4201b4d"
+								"2b5d10ea-65e8-427f-ba5d-229e3dbc52d9"
 							]
 						}
 					},
@@ -8970,7 +8970,7 @@
 									"const jsonData=pm.response.json();\r",
 									"pm.test('Missing mandatory field  errMessage', function () {\r",
 									"   pm.expect(jsonData.errMessage).to.be.a(\"String\");\r",
-									"   pm.expect(jsonData.errMessage,\"wrong error message\").to.include(\"Expired token used in request\");\r",
+									"   pm.expect(jsonData.errMessage,\"wrong error message\").to.include(\"Error verifying KxToken, Try again with fresh KxToken.\");\r",
 									"});\r",
 									"\r",
 									" //header validation\r",
